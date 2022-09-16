@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>RO Bonds</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css') }}">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <style>
+    body {
+        background-image: url('static/images/background_bvb.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    </style>
+</head>
+
+<body>
+    <h1><img src="static/images/bvb.png" alt="bvb" width=60 height=18> Bonds</h1>
+
+    <ul>
+        <li>Home</li>
+        <li>Details</li>
+        <li>About</li>
+    </ul>
+    <br>
+
+    <div style="border: 2px solid green; padding 50px; text-align: center; width: 20%;">
+        <p>
+            {% for bond in sorted_bonds_list %}
+            <a href="#RO{{ sorted_bonds_list.index(bond) }}" style="font-size: 15px; text-align: center; font-family: courier;
+                background-color:  rgba(245, 237, 209, 0.8)">
+                <b>{{ bond['Instrument'] }}: {{ bond['Computed IRR'] }}</b></a>
+            <a href="{{ bond_page_url }}{{ bond['Instrument'] }}" style="font-size: 15px; text-align: center; font-family: courier"
+            target="_blank" title="Link to bvb page"><img src="static/images/bond_link.png" alt="bond_link" width=30 height=20></a>
+            <br>
+            {% endfor %}
+            <a href="{{ url_for('index') }}"><img src="static/images/refresh.png" alt="refresh" width=150 height=40></a>
+        </p>
+    </div>
+
+    {% for bond in sorted_bonds_list %}
+    <table id="RO{{ sorted_bonds_list.index(bond) }}" style="background-color: rgba(245, 237, 209, 0.3)">
+      <thead>
+        <hr>
+      </thead>
+      <tbody>
+      {% for key, value in bond.items() %}
+       <tr>
+           <td><b>{{ key }} </b></td>
+           <td><b> {{ value }}</b></td>
+       </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endfor %}
+
+</body>
+
+</html>

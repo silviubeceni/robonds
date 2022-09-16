@@ -1,0 +1,24 @@
+h1 {
+    background-color: goldenrod transparent;
+    padding: 1px;
+    color: green;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+    list-style-type: none;
+    color: green;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color:  rgba(245, 237, 209, 0.5);
+}
+
+li:hover {
+    background-color:  rgba(245, 237, 209, 1);
+}
